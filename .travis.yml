@@ -16,7 +16,6 @@ jdk: oraclejdk8
 
 before_install:
   - cd outlay
-  - cp google-services.mock.json app/google-services.json
   
 script: ./gradlew clean assembleDebug
 
