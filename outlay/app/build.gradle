@@ -1,14 +1,13 @@
 buildscript {
     repositories {
-        maven { url 'https://maven.fabric.io/public' }
+        mavenCentral()
     }
-    dependencies{
-       // classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.5.0'
+    dependencies {
+        classpath 'com.trickyandroid:jacoco-everywhere:0.2.1'
     }
-
 }
+
 apply plugin: 'com.android.application'
-apply from: '../jacoco.gradle'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -17,7 +16,6 @@ repositories {
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'findbugs'
-//apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 def cfg = rootProject.ext.configuration
 def libs = rootProject.ext.libraries
@@ -96,7 +94,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':domain')
 
-
     //Google
     apt "com.google.dagger:dagger-compiler:${libs.dagger}"
 
@@ -136,6 +133,9 @@ dependencies {
     testCompile "org.mockito:mockito-core:1.9.5"
     androidTestCompile 'junit:junit:4.12'
     androidTestCompile "org.mockito:mockito-core:1.9.5"
+
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco-everywhere'
 apply plugin: 'com.google.gms.google-services'
