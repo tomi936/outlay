@@ -49,8 +49,5 @@ allprojects {
             url  "http://dl.bintray.com/dasar/maven"
         }
     }
-}
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
