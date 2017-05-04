@@ -34,7 +34,6 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     private CategoryDataSource getDataSource() {
         return firebaseSource;
     }
-    protected Map<String, Category> getCategoryMap(){return categoryMap;}
 
     @Override
     public Observable<List<Category>> getAll() {
