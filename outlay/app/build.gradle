@@ -2,9 +2,13 @@ buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
     }
+    dependencies{
+       // classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.5.0'
+    }
 
 }
 apply plugin: 'com.android.application'
+apply from: '../jacoco.gradle'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -13,9 +17,11 @@ repositories {
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'findbugs'
+//apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 def cfg = rootProject.ext.configuration
 def libs = rootProject.ext.libraries
+
 
 android {
     compileSdkVersion cfg.compileVersion
@@ -27,6 +33,7 @@ android {
         targetSdkVersion cfg.targetSdk
         versionCode cfg.version_code
         versionName cfg.version_name
+        testInstrumentationRunner "outlay.AndroidJacocoTestRunner"
     }
 
     def propsFile = rootProject.file('release.properties')
@@ -49,6 +56,7 @@ android {
     buildTypes {
         debug {
             buildConfigField "boolean", "USE_ANALYTICS", "false"
+            testCoverageEnabled = true;
         }
         staging {
             buildConfigField "boolean", "USE_ANALYTICS", "false"
@@ -126,6 +134,8 @@ dependencies {
     stagingCompile "com.google.firebase:firebase-crash:${libs.firebase}"
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile "org.mockito:mockito-core:1.9.5"
 }
 
 apply plugin: 'com.google.gms.google-services'
