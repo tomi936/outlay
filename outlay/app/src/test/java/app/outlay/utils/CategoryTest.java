@@ -16,7 +16,13 @@ public class CategoryTest {
     String icon = "ic_fuel";
     int order = 3;
     int color = -26624;
-    Category cat1;
+
+    String id2 = "25";
+    String title2 = "Testing";
+    String icon2 = "ic_bowling";
+    int order2 = 5;
+    int color2 = -30624;
+    Category cat1,cat2;
 
     @Before
     public void setUp() throws Exception {
@@ -26,6 +32,14 @@ public class CategoryTest {
         cat1.setIcon(icon);
         cat1.setOrder(order);
         cat1.setColor(color);
+
+
+        cat2 = new Category();
+        cat2.setId(id2);
+        cat2.setTitle(title2);
+        cat2.setIcon(icon2);
+        cat2.setOrder(order2);
+        cat2.setColor(color2);
     }
 
     @Test
@@ -37,8 +51,8 @@ public class CategoryTest {
 
     @Test
     public void setId() throws Exception {
-        cat1.setId("25");
-        boolean result = cat1.getId().equals("25");
+        cat1.setId(id2);
+        boolean result = cat1.getId().equals(id2);
 
         assertEquals(true, result);
     }
@@ -52,8 +66,8 @@ public class CategoryTest {
 
     @Test
     public void setTitle() throws Exception {
-        cat1.setTitle("Testing");
-        boolean result = cat1.getTitle().equals("Testing");
+        cat1.setTitle(title2);
+        boolean result = cat1.getTitle().equals(title2);
 
         assertEquals(true, result);
     }
@@ -67,8 +81,8 @@ public class CategoryTest {
 
     @Test
     public void setIcon() throws Exception {
-        cat1.setIcon("ic_bowling");
-        boolean result = cat1.getIcon().equals("ic_bowling");
+        cat1.setIcon(icon2);
+        boolean result = cat1.getIcon().equals(icon2);
 
         assertEquals(true, result);
     }
@@ -82,8 +96,8 @@ public class CategoryTest {
 
     @Test
     public void setOrder() throws Exception {
-        cat1.setOrder(5);
-        boolean result = cat1.getOrder() == 5;
+        cat1.setOrder(order2);
+        boolean result = cat1.getOrder() == order2;
 
         assertEquals(true, result);
     }
@@ -97,8 +111,53 @@ public class CategoryTest {
 
     @Test
     public void setColor() throws Exception {
-        cat1.setColor(-30624);
-        boolean result = cat1.getColor() == -30624;
+        cat1.setColor(color2);
+        boolean result = cat1.getColor() == color2;
+
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void equals() throws Exception {
+        boolean result = cat1.equals(cat2);
+
+        assertEquals(false, result);
+    }
+
+    @Test
+    public void equals2() throws Exception {
+        cat2.setId(id);
+        boolean result = cat1.equals(cat2);
+
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void equals3() throws Exception {
+        Category cat3 = cat1;
+        boolean result = cat1.equals(cat3);
+
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void hashCode0() throws Exception {
+        boolean result = cat1.hashCode() == cat1.getId().hashCode();
+
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void hashCode1() throws Exception {
+        Category cat3 = new Category();
+        boolean result = cat3.hashCode() == 0;
+
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void hashCode2() throws Exception {
+        boolean result = cat1.hashCode() == cat1.hashCode();
 
         assertEquals(true, result);
     }

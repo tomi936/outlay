@@ -7,7 +7,7 @@ import app.outlay.domain.model.Credentials;
 import static org.junit.Assert.*;
 
 /**
- * Created by user on 2017. 05. 04..
+ * Created by László Tamás on 2017. 05. 04..
  */
 public class CredentialsTest {
 
