@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
  * Created by Lycan on 2017. 05. 04..
  */
 public class DeviceUtilsTest {
+
+
     @org.junit.Test
     public void getScreenSize() throws Exception {
 
