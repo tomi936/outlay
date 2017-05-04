@@ -9,9 +9,6 @@ import app.outlay.data.source.CategoryDataSource;
 import app.outlay.domain.model.Category;
 import app.outlay.domain.repository.CategoryRepository;
 import rx.Observable;
-import rx.functions.Action1;
-
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -28,11 +25,6 @@ public class CategoryRepositoryImplTest {
     int order = 3;
     int color = -26624;
 
-    String id2 = "25";
-    String title2 = "Testing";
-    String icon2 = "ic_bowling";
-    int order2 = 5;
-    int color2 = -30624;
     Category cat1,cat2;
 
     @Before
@@ -44,13 +36,6 @@ public class CategoryRepositoryImplTest {
         cat1.setOrder(order);
         cat1.setColor(color);
 
-
-        cat2 = new Category();
-        cat2.setId(id2);
-        cat2.setTitle(title2);
-        cat2.setIcon(icon2);
-        cat2.setOrder(order2);
-        cat2.setColor(color2);
 
         mockFS = mock(CategoryDataSource.class);
         CR = new CategoryRepositoryImpl(mockFS);
