@@ -17,6 +17,8 @@ public class UserTest {
 
     @Before
     public void setUp() throws Exception {
+        testUser = new User();
+
         testMail = "asd@gmail.com";
         testToken = "asd";
         testName = "asdasd";

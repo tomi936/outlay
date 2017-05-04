@@ -30,74 +30,77 @@ public class ReportTest {
     @Before
     public void setUp() throws Exception {
         expenses = new ArrayList<Expense>();
+        testReport = new Report();
 
         expenses.add(expense1);
+        expense1.setAmount(BigDecimal.valueOf(1000));
         expenses.add(expense2);
+        expense2.setAmount(BigDecimal.valueOf(1000));
 
         testReport.setEndDate(endDate);
         testReport.setStartDate(startDate);
-
-        testReport = new Report();
         testReport.setExpenses(expenses);
     }
     @Test
     public void isEmpty() throws Exception {
-        assertTrue(expenses.isEmpty());
+        assertEquals(false, expenses.isEmpty());
     }
 
     @Test
     public void getExpenses() throws Exception {
-        assertTrue(testReport.getExpenses() == expenses);
+        assertEquals(true, testReport.getExpenses() == expenses);
     }
 
     @Test
     public void setExpenses() throws Exception {
         testReport.setExpenses(expenses);
-        assertTrue(testReport.getExpenses() != expenses);
+        assertEquals(true, testReport.getExpenses() == expenses);
     }
 
     @Test
     public void getStartDate() throws Exception {
-        assertTrue(testReport.getStartDate() == startDate);
+        assertEquals(true, testReport.getStartDate().equals(startDate));
     }
 
     @Test
     public void setStartDate() throws Exception {
-        testReport.setEndDate(startDate);
-        assertTrue(testReport.getStartDate() != startDate);
+        testReport.setStartDate(startDate);
+        assertEquals(true, testReport.getStartDate().equals(startDate));
     }
 
     @Test
     public void getEndDate() throws Exception {
-        assertTrue(testReport.getEndDate() == endDate);
+        assertEquals(true, testReport.getEndDate().equals(endDate));
     }
 
     @Test
     public void setEndDate() throws Exception {
         testReport.setEndDate(endDate);
-        assertTrue(testReport.getEndDate() != endDate);
+        assertEquals(true, testReport.getEndDate().equals(endDate));
     }
 
     @Test
     public void getTotalAmount() throws Exception {
-        assertTrue(testReport.getTotalAmount().compareTo(BigDecimal.ZERO) <= 0);
+        assertEquals(true, testReport.getTotalAmount().compareTo(BigDecimal.ZERO) >= 0);
     }
 
     @Test
     public void getTotalAmount1() throws Exception {
-        assertTrue(testReport.getTotalAmount(startDate,endDate).compareTo(BigDecimal.ZERO) < 0);
+        assertEquals(true, testReport.getTotalAmount(startDate,endDate).compareTo(BigDecimal.ZERO) >= 0);
     }
 
     @Test
     public void groupByCategory() throws Exception {
         Map<Category, Report> resultMap = testReport.groupByCategory();
-        Category[] resultArray = (Category[]) resultMap.keySet().toArray();
+        Object[] resultArray = resultMap.keySet().toArray();
         boolean result = true;
-        for (int i = 1; i< resultArray.length; ++i)
-            if (resultArray[i-1].getTitle().compareTo(resultArray[i].getTitle()) > 0)
+        for (int i = 1; i< resultArray.length; ++i) {
+            Category temp1 = (Category) resultArray[i-1];
+            Category temp2 = (Category) resultArray[i];
+            if (temp1.getTitle().compareTo(temp2.getTitle()) > 0)
                 result = false;
-
-        assertFalse(result);
+        }
+        assertEquals(true, result);
     }
 
 

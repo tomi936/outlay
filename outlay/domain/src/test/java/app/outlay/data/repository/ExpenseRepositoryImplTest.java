@@ -20,6 +20,21 @@ import static org.mockito.Mockito.*;
  */
 public class ExpenseRepositoryImplTest {
 
+    private Category testCategory;
+    private ExpenseRepositoryImpl test;
+
+    private Date testDate;
+
+    @Before
+    public void setUp() throws Exception {
+
+        /*testCategory.setId("1");
+        testCategory.setTitle("asd");
+        testCategory.setOrder(200);
+        testCategory.setIcon("asd");
+        testCategory.setColor(2);*/
+    }
+
     @Test
     public void saveExpense() throws Exception {
 
