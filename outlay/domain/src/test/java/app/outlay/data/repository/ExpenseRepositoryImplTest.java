@@ -1,13 +1,25 @@
 package app.outlay.data.repository;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import app.outlay.data.source.ExpenseDataSource;
+import app.outlay.domain.model.Category;
+import app.outlay.domain.model.Expense;
+import rx.Observable;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Lycan on 2017. 05. 04..
  */
 public class ExpenseRepositoryImplTest {
+
     @Test
     public void saveExpense() throws Exception {
 
@@ -25,7 +37,7 @@ public class ExpenseRepositoryImplTest {
 
     @Test
     public void getExpenses() throws Exception {
-      
+
     }
 
     @Test

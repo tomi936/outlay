@@ -79,7 +79,7 @@ public class CategoryRepositoryImplTest {
         verify(mockFS, times(1)).getById("5");
     }
 
-    
+
     @org.junit.Test
     public void remove() throws Exception {
         CR.remove(cat1);
