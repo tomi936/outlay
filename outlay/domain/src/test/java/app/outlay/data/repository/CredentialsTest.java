@@ -1,4 +1,4 @@
-package app.outlay.utils;
+package app.outlay.data.repository;
 
 import org.junit.Before;
 
